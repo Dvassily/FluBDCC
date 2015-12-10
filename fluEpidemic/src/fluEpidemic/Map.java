@@ -45,8 +45,9 @@ public class Map {
 	 * @param y vertical coordinates
 	 * @param e the entity to put
 	 */
-	public Entity putEntity(Entity e, int x, int y){
-		return map[x][y];
+	public void putEntity(Entity e, int x, int y){
+		map[x][y] = e;
+		
 	}
 
 	/**
