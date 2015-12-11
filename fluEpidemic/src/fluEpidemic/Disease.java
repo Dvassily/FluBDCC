@@ -1,5 +1,7 @@
 package fluEpidemic;
 
+import java.util.Random;
+
 public enum Disease {
 	NONE("NONE", 0),
 	H1N1("H1N1", 45),
@@ -8,19 +10,21 @@ public enum Disease {
 	private int ratio;
 	private String name;
 	
-	Disease(){
+	Disease() {
 		ratio = 0;
 		name = null;
 	}
-	Disease(String name){
+	
+	Disease(String name) {
 		this.name= name;
 	}
-	Disease(String n, int k){
+	
+	Disease(String n, int k) {
 		ratio = k;
 		name =n;
 	}
 	
-	void getDiseaseWithOrdinal(int j){
+	public void getDiseaseWithOrdinal(int j) {
 		for (Disease s : Disease.values()){
 			if (s.ordinal() == j){
 				this.name=  s.name;
@@ -28,16 +32,19 @@ public enum Disease {
 			}
 		}
 	}
-	public int getSize(){
+	public int getSize() {
 		return Disease.values().length;
 	}
 	
-	String getName(){
+	public String getName() {
 		return name;
 	}
-	int getRatio(){
+	
+	public int getRatio() {
 		return ratio;
 	}
 	
-	
+	public static Disease drawDisease() {
+	    return Disease.values()[(new Random().nextInt(Disease.values().length))];
+	}
 }
