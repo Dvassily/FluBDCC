@@ -37,4 +37,10 @@ public class Human extends Entity {
     public Boolean canMove() {
 	return true;
     }
+
+    public void update() {
+	if(decrease()) {
+	    
+	}
+    }
 }

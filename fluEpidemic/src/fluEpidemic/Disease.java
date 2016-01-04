@@ -2,36 +2,30 @@ package fluEpidemic;
 
 import java.util.Random;
 
+/**
+ * Enum for representing diseases.
+ * Each disease is associated with a mortality rate, an incubation period and a name
+ */
 public enum Disease {
-	NONE("NONE", 0),
-	H1N1("H1N1", 45),
-	H2N2("H2N2", 37);
-	
-	private int ratio;
+	H1N1("H1N1", 4, 2),
+	H2N2("H2N2", 37, 3);
+
 	private String name;
+	private int ratio;
+	private int incubationPeriod;
 	
-	Disease() {
-		ratio = 0;
-		name = null;
+	/**
+	 * Construct a disease
+	 * @param ratio the mortality rate
+	 * @param incubationPeriod the duration of incubation period
+	 * @param name
+	 */
+	Disease(String name, int ratio, int incubationPeriod) {
+	    this.name = name;
+	    this.ratio = ratio;
+	    this.incubationPeriod = incubationPeriod;
 	}
-	
-	Disease(String name) {
-		this.name= name;
-	}
-	
-	Disease(String n, int k) {
-		ratio = k;
-		name =n;
-	}
-	
-	public void getDiseaseWithOrdinal(int j) {
-		for (Disease s : Disease.values()){
-			if (s.ordinal() == j){
-				this.name=  s.name;
-				this.ratio = s.ratio;
-			}
-		}
-	}
+
 	public int getSize() {
 		return Disease.values().length;
 	}
@@ -42,6 +36,10 @@ public enum Disease {
 	
 	public int getRatio() {
 		return ratio;
+	}
+
+	public int getIncubationPeriod() {
+	    return this.incubationPeriod;
 	}
 
 	public void infect(Entity e) {

@@ -1,8 +1,10 @@
 package fluEpidemic;
 
 import java.util.List;
+import java.util.LinkedList;
 import java.util.Random;
 import java.util.Set;
+import java.util.Collections;
 
 public class Map {
     private Entity map[][];
@@ -58,10 +60,10 @@ public class Map {
     public void moveRandomly(int x, int y) {
 	// TODO: Improve algorithm to avoid infinite loop
 	Boolean moveSucceded = false;
-	while (! moveSucceded) {
-	    Direction d = Direction.randomDirection();
+	LinkedList<Direction> list = Direction.getList();
 
-	    switch(d) {
+	while ((! moveSucceded) && (! list.isEmpty())) {
+	    switch(list.pop()) {
 	    case NORTH: moveSucceded = moveToNorth(x, y); break;
 	    case EAST:  moveSucceded = moveToEast(x, y);  break;
 	    case SOUTH: moveSucceded = moveToSouth(x, y); break;
