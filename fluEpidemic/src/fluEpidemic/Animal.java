@@ -24,14 +24,14 @@ public class Animal extends Entity {
      * Instanciate an random generated animal
      */
     public Animal() {
-	this(Species.values()[(new Random()).nextInt(Species.values().length)],
-	     null,
-	     0);
+	this(Species.values()[(new Random()).nextInt(Species.values().length)], null, 0);
     }
 
-    public String toString(){
-	String res = "";
-	res = res+ type.getName();
-	return res;
+    public String getName(){
+	return type.getName();
+    }
+
+    public Boolean canMove() {
+	return false;
     }
 }

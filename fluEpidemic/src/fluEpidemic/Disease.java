@@ -43,6 +43,10 @@ public enum Disease {
 	public int getRatio() {
 		return ratio;
 	}
+
+	public void infect(Entity e) {
+	    e.infect(this, 5);
+	}
 	
 	public static Disease drawDisease() {
 	    return Disease.values()[(new Random().nextInt(Disease.values().length))];

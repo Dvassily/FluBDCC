@@ -25,9 +25,16 @@ public class Human extends Entity {
 	recovery = 0;
     }
 
-    public String toString(){
-	String res = new String();
-	res = "HUMANS";
-	return res;
+    public String getName(){
+	return "HUMAN";
+    }
+
+    public void clear(){
+	this.disease = null;
+	this.countDisease = 0;
+    }
+
+    public Boolean canMove() {
+	return true;
     }
 }

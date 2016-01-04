@@ -1,9 +1,16 @@
 package fluEpidemic;
 
-public class Main {
+import java.io.IOException;
 
+public class Main {
 	public static void main(String[] args){
-		Simulation a = new Simulation(5, 4, 20, 20);
-		System.out.println(a.toString());
+	    Simulation a = new Simulation(6, 10, 20, 20, new Neighbourhood4x4());
+	    System.out.println(a.toString());
+
+	    try {
+		a.run();
+	    } catch(IOException e) {
+		e.printStackTrace();
+	    }
 	}
 }

@@ -2,26 +2,40 @@ package fluEpidemic;
 
 import java.util.Random;
 
+/**
+ * Class for initialize the simulation population
+ */
 public class PopulationInitializer {
     private Map map;
     private int nbHumans;
     private int nbAnimal;
-    private int maxDayRecup;
+    private int maxDayRecover;
     private int maxDayDead;
-	
+
+    /**
+     * Constructs a population intialize
+     * @param map The map to populate
+     * @param maxDayRecover The maximum number of day before a human can recover
+     * @param maxDayDead The maximum number of day before a entity dies
+     * @param nbAnimal the number of animals in the simulation
+     * @param nbHumans the number of humans in the simulation
+     */
     public PopulationInitializer(Map map,
-				 int maxDayRecup,
+				 int maxDayRecover,
 				 int maxDayDead,
 				 int nbAnimal,
 				 int nbHumans) {
 	Random rand = new Random();
-	this.maxDayRecup = maxDayRecup;
+	this.maxDayRecover = maxDayRecover;
 	this.maxDayDead = maxDayDead;
 	this.map = map;
 	this.nbHumans = rand.nextInt(map.getHorizontalDimensions())+1;
 	this.nbAnimal = rand.nextInt(map.getHorizontalDimensions())+1;
     }
 
+    /**
+     * Initializes the population
+     */
     public void initializePopulation() {
 	this.fillMapHumans();
 	this.fillMapAnimal();
