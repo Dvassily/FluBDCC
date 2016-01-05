@@ -55,7 +55,7 @@ public abstract class Entity {
 
 
     public void update() {
-	if (decrease()) {
+	if (!decrease()) {
 	    this.kill();
 	}
     }

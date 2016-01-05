@@ -1,11 +1,14 @@
 package fluEpidemic;
 
+import java.util.Random;
+
 /**
  * Class which represents an human in the simulation
  */
 public class Human extends Entity {
     private int recovery;
-
+    private boolean incubation = false;
+    private int countIncubation = 4;
     /**
      * Instanciate an human with a disease
      * @param disease The type of disease
@@ -37,10 +40,32 @@ public class Human extends Entity {
     public Boolean canMove() {
 	return true;
     }
-
-    public void update() {
-	if(decrease()) {
-	    
-	}
+    
+    public boolean isHeSick(){
+    	return this.countIncubation == 0;
     }
-}
+    @Override
+    public void update() {
+    	if (!incubation){
+    		Random r = new Random();
+    		int luck = r.nextInt(5);
+    		if ( luck == 5){
+    			this.incubation = true;
+    		}
+    	}
+    	else{
+    		if (this.countIncubation == 0){
+    				this.disease = null;
+    			}
+    		else{
+    			this.countIncubation --;
+    		}
+    	}
+    	
+    	if(!decrease()) {
+    		this.kill();
+    	 }
+    	
+    	}
+    }
+
