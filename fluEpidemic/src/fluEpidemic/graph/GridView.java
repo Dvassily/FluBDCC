@@ -55,7 +55,6 @@ public class GridView extends JFrame implements SimulatorView {
         contents.add(population, BorderLayout.SOUTH);
         pack();
         setVisible(true);
-	System.out.println("foo");
     }
 
     /**
@@ -90,7 +89,13 @@ public class GridView extends JFrame implements SimulatorView {
 	if (entity.isDead()) {
 	    return Color.BLACK;
 	} else if (entity.isSick()) {
-	    return Color.GREEN;
+	    if (entity.isContagious()) {
+		return Color.GREEN;
+	    } else if (entity.isRecovering()) {
+		return Color.BLUE;
+	    } else {
+		return Color.RED;
+	    }
 	} else {
 	    return getColor(entity.getClass());
 	}

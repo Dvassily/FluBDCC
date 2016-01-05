@@ -63,6 +63,9 @@ public class Simulation {
 	}
     }
 
+    /**
+     * Skip to the next day
+     */
     public void step() {
 	for (int x = 0; x < field.getHorizontalDimensions(); ++x) {
 	    for (int y = 0; y < field.getVerticalDimensions(); ++y) {
@@ -92,6 +95,20 @@ public class Simulation {
 	}
 	view.showStatus(0, this.field);
     }
+
+    /**
+     * Stop condition of the simulation
+     */
+    public boolean isEnded() {
+	for (int x = 0; x < field.getHorizontalDimensions(); ++x) {
+	    for (int y = 0; y < field.getVerticalDimensions(); ++y) {
+		if (! field.isEmpty(x, y) && field.reportEntity(x, y).isSick()) {
+		    return false;
+		}
+	    }
+	}
+	return true;
+    }
 	
     public String toString() {
 	int dimX = field.getHorizontalDimensions();
@@ -113,24 +130,6 @@ public class Simulation {
 	return res;
     }
 
-    public boolean isEnded() {
-	for (int x = 0; x < field.getHorizontalDimensions(); ++x) {
-	    for (int y = 0; y < field.getVerticalDimensions(); ++y) {
-		if (! field.isEmpty(x, y) && field.reportEntity(x, y).isSick()) {
-		    return false;
-		}
-	    }
-	}
-	return true;
-    }
-
-    public int getNbHumans() {
-	return nbHumans;
-    }
-
-    public int getNbAnimals() {
-	return nbAnimals;
-    }
 
     public void setDelay(int delay) {
 	this.delay = delay;

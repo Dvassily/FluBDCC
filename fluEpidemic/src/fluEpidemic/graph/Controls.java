@@ -94,7 +94,7 @@ public class Controls extends JFrame {
 	public void actionPerformed(ActionEvent e) {
 	    switch(neighbourhoodRadioGroup.getSelection().getActionCommand()) {
 	    case "4-connected":
-		simulation.setNeighbourHoodStrategy(new Neighbourhood4x4());
+		simulation.setNeighbourHoodStrategy(new FourConnectedNeighbourhood());
 		break;
 	    case "8-connected":
 		simulation.setNeighbourHoodStrategy(new HeightConnectedNeighbourhood());

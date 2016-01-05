@@ -7,49 +7,60 @@ import java.util.Random;
  * simulation
  */
 public class Human extends Entity {
-	/**
-	 * Instanciate a sick human
-	 * 
-	 * @param disease
-	 *            The type of disease
-	 */
-	public Human(Disease disease) {
-		super(disease);
-	}
+    int countRecover;
 
-	/**
-	 * Instanciate an healty human 
-	 */
-	public Human() {
-		super();
-	}
+    /**
+     * Instanciate a sick human
+     * 
+     * @param disease
+     *            The type of disease
+     */
+    public Human(Disease disease) {
+	super(disease);
+    }
 
-	public String getName() {
-		return "HUMAN";
-	}
+    /**
+     * Instanciate an healty human 
+     */
+    public Human() {
+	super();
+    }
 
-	public void clear() {
+    public String getName() {
+	return "HUMAN";
+    }
+
+    public Boolean canMove() {
+	return (! this.isDead());
+    }
+
+    /**
+     * Update the state of an human
+     * If the numbers of days remaining is 0, the entity die
+     * If the human is recovering and the duration of recovery is reached, he recover
+     */
+    @Override
+    public void update() {
+	if (isRecovering())  {
+	    if (--this.countRecover == 0) {
 		this.disease = null;
-		this.countDisease = 0;
-	}
-
-	public Boolean canMove() {
-	    return (! this.isDead());
-	}
-
-	@Override
-	public void update() {
-		if (!decrease()) {
-			if ((new Random().nextInt(101)) < this.disease.getRatio()) {
-				this.kill();
-			} else {
-				this.recover();
-			}
+	    } 
+	} else {
+	    if (!decrease()) {
+		if ((new Random().nextInt(101)) < this.disease.getRatio()) {
+		    this.kill();
+		} else {
+		    this.recover();
 		}
+	    }
 	}
+    }
 
-	private void recover() {
-		this.disease = null;
-		this.countDisease = 0;
-	}
+    private void recover() {
+	this.countRecover = this.disease.getRecoveringPeriod();
+    }
+
+    public boolean isRecovering() {
+	return this.countRecover > 0;
+    }
 }
