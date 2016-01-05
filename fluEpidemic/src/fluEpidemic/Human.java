@@ -8,8 +8,6 @@ import java.util.Random;
  */
 public class Human extends Entity {
 	private int recovery;
-	private boolean incubation = false;
-	private int countIncubation = 4;
 
 	/**
 	 * Instanciate an human with a disease
@@ -44,32 +42,22 @@ public class Human extends Entity {
 	}
 
 	public Boolean canMove() {
-		return true;
-	}
-
-	public boolean isHeSick() {
-		return this.countIncubation == 0;
+	    return (! this.isDead());
 	}
 
 	@Override
 	public void update() {
-		if (!incubation) {
-			Random r = new Random();
-			int luck = r.nextInt(5);
-			if (luck == 5) {
-				this.incubation = true;
-			}
-		} else {
-			if (this.countIncubation == 0) {
-				this.disease = null;
-			} else {
-				this.countIncubation--;
-			}
-		}
-
 		if (!decrease()) {
-			this.kill();
+			if ((new Random().nextInt(101)) < this.disease.getRatio()) {
+				this.kill();
+			} else {
+				this.recover();
+			}
 		}
+	}
 
+	private void recover() {
+		this.disease = null;
+		this.countDisease = 0;
 	}
 }

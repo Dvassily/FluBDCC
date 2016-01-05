@@ -14,8 +14,6 @@ public class Simulation {
     private int nbHumans;
     private int nbAnimals;
     private Field field;
-    private int maxDayRecover;
-    private int maxDayDead;
     private SimulatorView view;
     
     public static final String ANSI_GREEN = "\u001B[32m";
@@ -26,22 +24,14 @@ public class Simulation {
      * The simulation class
      * @param x The horizontal dimension of the field
      * @param y The horizontal dimension of the fielda
-     * @param maxDayRecover The maximum number of day before a human can recover
-     * @param maxDayDead The maximum number of day before a entity dies
      * @param ns The way of compute the neighbourhood of a case
      */
-    Simulation(int x, int y,
-	       int maxDayRecover,
-	       int maxDayDead,
-	       NeighbourhoodStrategy ns) {
+    Simulation(int x, int y, NeighbourhoodStrategy ns) {
 	this.field = new Field(x, y, ns);
 	Random rand = new Random();
 	new PopulationInitializer(this.field,
-				  maxDayRecover,
-				  maxDayDead,
 				  rand.nextInt(x) + 1,
 				  rand.nextInt(x) + 1).initializePopulation();
-
 
 	SimulatorView view = new GridView(x, y);
 	view.setColor(Entity.class, Color.RED);
@@ -76,7 +66,8 @@ public class Simulation {
 		if (! field.isEmpty(x, y) && field.reportEntity(x, y).isSick()) {
 		    Set<Entity> neighbours = field.getNeighbours(x, y);
 		    for (Entity neighbour : neighbours)
-			neighbour.infect(field.reportEntity(x, y).getDisease(), maxDayDead);
+			    neighbour.infect(field.reportEntity(x, y).getDisease());
+		    field.reportEntity(x, y).update();
 		}
 	    }
 	    

@@ -10,8 +10,6 @@ public class PopulationInitializer {
     private Field field;
     private int nbHumans;
     private int nbAnimal;
-    private int maxDayRecover;
-    private int maxDayDead;
 
     /**
      * Constructs a population intialize
@@ -22,43 +20,39 @@ public class PopulationInitializer {
      * @param nbHumans the number of humans in the simulation
      */
     public PopulationInitializer(Field field,
-				 int maxDayRecover,
-				 int maxDayDead,
 				 int nbAnimal,
 				 int nbHumans) {
 	Random rand = new Random();
-	this.maxDayRecover = maxDayRecover;
-	this.maxDayDead = maxDayDead;
 	this.field = field;
-	this.nbHumans = rand.nextInt(field.getHorizontalDimensions())+1;
-	this.nbAnimal = rand.nextInt(field.getHorizontalDimensions())+1;
+	this.nbHumans = rand.nextInt(field.getHorizontalDimensions()) + 1;
+	this.nbAnimal = rand.nextInt(field.getHorizontalDimensions()) + 1;
     }
 
-	/**
-	 * Initializes the population
-	 */
-	public void initializePopulation() {
-		this.fillMapHumans();
-		this.fillMapAnimal();
-	}
+    /**
+     * Initializes the population
+     */
+    public void initializePopulation() {
+	this.fillMapHumans();
+	this.fillMapAnimal();
+    }
 
-	private void fillMapHumans() {
-		Random rand = new Random();
+    private void fillMapHumans() {
+	Random rand = new Random();
 
-		for (int i = 0; i < nbHumans;) {
-		    int cX = rand.nextInt(field.getHorizontalDimensions() - 1) + 1;
-		    int cY = rand.nextInt(field.getVerticalDimensions());
-		    if (field.isEmpty(cX, cY)){
-			field.putEntity(new Human(),
-					cX, cY);
-			i++;
-		    }
-		}
+	for (int i = 0; i < nbHumans;) {
+	    int cX = rand.nextInt(field.getHorizontalDimensions() - 1) + 1;
+	    int cY = rand.nextInt(field.getVerticalDimensions());
+	    if (field.isEmpty(cX, cY)){
+		field.putEntity(new Human(),
+				cX, cY);
+		i++;
+	    }
 	}
+    }
 
     private void fillMapAnimal() {
 	Random rand = new Random();
-	field.putEntity(new Animal(Species.CHICKEN, Disease.H1N1, maxDayDead), 0, 0);
+	field.putEntity(new Animal(Species.CHICKEN, Disease.H1N1, 0), 0, 0);
 
 	for (int i = 0; i < nbAnimal;) {
 	    int cX = rand.nextInt(field.getHorizontalDimensions());
@@ -67,7 +61,7 @@ public class PopulationInitializer {
 		Boolean isHeSick = rand.nextBoolean();
 		Animal a = new Animal();
 		if (rand.nextBoolean())
-		    a.infect(Disease.drawDisease(), maxDayDead);
+		    a.infect(Disease.drawDisease());
 		field.putEntity(a, cX, cY);
 		i++;
 	    }

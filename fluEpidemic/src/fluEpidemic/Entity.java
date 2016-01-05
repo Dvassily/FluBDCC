@@ -37,9 +37,9 @@ public abstract class Entity {
 		return this.disease;
 	}
 
-	public void infect(Disease d, int countDisease) {
+	public void infect(Disease d) {
 		this.disease = d;
-		this.countDisease = countDisease;
+		this.countDisease = d.getDuration();
 	}
 
 	public boolean isSick() {
