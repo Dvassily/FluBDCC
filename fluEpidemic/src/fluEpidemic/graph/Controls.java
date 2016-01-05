@@ -6,11 +6,18 @@ import javax.swing.event.*;
 import javax.swing.border.*;
 import java.awt.event.*;
 
+/**
+ * A frame for adjusting simulation settings
+ */
 public class Controls extends JFrame {
+    // Panel that contains the speed slider
     private JPanel speedPanel;
+    // Panel that contains the button group for neighbourhood selection
     private JPanel neighbourhoodPanel;
     private JSlider speedSlider;
     private ButtonGroup neighbourhoodRadioGroup;
+
+    // The simulation object
     private Simulation simulation;
     
     /**
@@ -30,6 +37,10 @@ public class Controls extends JFrame {
 	setVisible(true);
     }
 
+    /**
+     * @return 
+     *        the panel for controlling simulation speed
+     */
     private JPanel buildSpeedPanel() {
 	JPanel panel = new JPanel();
 	Border lowerEtched = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
@@ -53,6 +64,10 @@ public class Controls extends JFrame {
 	return panel;
     }
 
+    /**
+     * @return 
+     *        the panel for adjusting the neighbourhood computing
+     */
     private JPanel buildNeighbourhoodPanel() {
 	JPanel panel = new JPanel();
 	Border lowerEtched = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
@@ -72,6 +87,9 @@ public class Controls extends JFrame {
 	return panel;	
     }
 
+    /**
+     * A listener class for the radio buttons in the neighbourhood strategy panel
+     */
     public class RadioNeighbourhoodListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 	    switch(neighbourhoodRadioGroup.getSelection().getActionCommand()) {

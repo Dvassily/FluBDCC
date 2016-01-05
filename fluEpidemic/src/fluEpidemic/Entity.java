@@ -35,7 +35,7 @@ public abstract class Entity {
 	 *        Returns true if the entity is sick, false otherwise
 	 */	
 	public boolean isSick() {
-		return this.disease != null;
+	    return this.disease != null && ! this.isDead();
 	}
 
 	/**

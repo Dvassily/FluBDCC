@@ -8,7 +8,9 @@ import java.io.IOException;
 import java.awt.Color;
 
 /**
- * author : @CésarCollé and @BasilDali The simulation class
+ * The simulation class
+ * @author CésarCollé
+ * @author BasilDali
  */
 public class Simulation {
     public static final int MIN_SPEED_VALUE = 100;
@@ -19,7 +21,9 @@ public class Simulation {
     private Field field;
     private SimulatorView view;
     private Controls controlsFrame;
+    // The duration of a day in the simulation
     private int delay = MIN_SPEED_VALUE;
+    // A variable that contains the current system time
     private long timer;
     
     public static final String ANSI_GREEN = "\u001B[32m";
@@ -45,6 +49,9 @@ public class Simulation {
 	this.controlsFrame = new Controls(this);
     }
 
+    /**
+     * Run the simulation until its end
+     */
     public void run() throws IOException {
 	this.timer = System.currentTimeMillis();
 	
@@ -52,7 +59,6 @@ public class Simulation {
 	    if (System.currentTimeMillis() >= this.timer + this.delay) {
 		this.step();
 		this.timer = System.currentTimeMillis();
-		System.out.println("Foo");
 	    }
 	}
     }
@@ -108,19 +114,14 @@ public class Simulation {
     }
 
     public boolean isEnded() {
-	boolean hasHumansRemaining = false;
-	
 	for (int x = 0; x < field.getHorizontalDimensions(); ++x) {
 	    for (int y = 0; y < field.getVerticalDimensions(); ++y) {
-		if (! field.isEmpty(x, y)) {
-			Entity e = field.reportEntity(x, y);
-			if (e.isSick()) return false;
-			if (e.getName().equals("HUMAN")) hasHumansRemaining = true;
+		if (! field.isEmpty(x, y) && field.reportEntity(x, y).isSick()) {
+		    return false;
 		}
 	    }
 	}
-	
-	return ! hasHumansRemaining;
+	return true;
     }
 
     public int getNbHumans() {
