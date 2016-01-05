@@ -1,11 +1,16 @@
 package fluEpidemic;
-
 import java.util.List;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.Set;
 import java.util.Collections;
 
+
+/*
+ *  * author : @CésarCollé and @BasilDali
+ * Map program who will manage the movement
+ * and create a whole map filled by entities
+ */
 public class Map {
     private Entity map[][];
     private NeighbourhoodStrategy ns;

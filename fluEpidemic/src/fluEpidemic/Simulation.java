@@ -6,6 +6,7 @@ import java.util.Set;
 import java.io.IOException;
 
 /**
+ *author : @CésarCollé and @BasilDali
  * The simulation class
  */
 public class Simulation {
@@ -14,11 +15,7 @@ public class Simulation {
     private Map map;
     private int maxDayRecover;
     private int maxDayDead;
-    
-    public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_RED   = "\u001B[31m";
-    public static final String ANSI_RESET = "\u001B[0m";
-    
+        
     /**
      * The simulation class
      * @param x The horizontal dimension of the map

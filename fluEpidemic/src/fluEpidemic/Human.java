@@ -3,6 +3,7 @@ package fluEpidemic;
 import java.util.Random;
 
 /**
+ *author : @CésarCollé and @BasilDali
  * Class which represents an human in the simulation
  */
 public class Human extends Entity {

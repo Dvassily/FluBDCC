@@ -3,6 +3,7 @@ package fluEpidemic;
 import java.util.Random;
 
 /**
+ *author : @CésarCollé and @BasilDali
  * Class for initialize the simulation population
  */
 public class PopulationInitializer {

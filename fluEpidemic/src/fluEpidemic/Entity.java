@@ -77,12 +77,10 @@ public abstract class Entity {
 
     public String toString() {
 	String res = "";
-	
-	if      (this.isDead()) res = Simulation.ANSI_RED;
-	else if (this.isSick()) res = Simulation.ANSI_GREEN;
+	if      (this.isDead()) res = ColorAnsi.RED.getCodeColor();
+	else if (this.isSick()) res = ColorAnsi.GREEN.getCodeColor();
 	res +=  this.getName();
-	res += Simulation.ANSI_RESET;
-	
+	res += ColorAnsi.RESET.getCodeColor();
 	return res;
     }
 }

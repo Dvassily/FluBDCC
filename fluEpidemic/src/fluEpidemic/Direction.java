@@ -3,7 +3,9 @@ package fluEpidemic;
 import java.util.Random;
 import java.util.Collections;
 import java.util.LinkedList;
-
+/*
+ * Direction enum manage direction of entity on the map
+ */
 public enum Direction {
     NORTH, SOUTH, WEST, EAST;
 
