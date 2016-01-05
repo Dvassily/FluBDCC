@@ -3,7 +3,8 @@ package fluEpidemic;
 import java.util.Random;
 
 /**
- * Class for initialize the simulation population
+ * author : @CésarCollé and @BasilDali Class for initialize the simulation
+ * population
  */
 public class PopulationInitializer {
     private Field field;
@@ -33,27 +34,27 @@ public class PopulationInitializer {
 	this.nbAnimal = rand.nextInt(field.getHorizontalDimensions())+1;
     }
 
-    /**
-     * Initializes the population
-     */
-    public void initializePopulation() {
-	this.fillMapHumans();
-	this.fillMapAnimal();
-    }
-
-    private void fillMapHumans() {
-	Random rand = new Random();
-		
-	for (int i = 0; i < nbHumans;) {
-	    int cX = rand.nextInt(field.getHorizontalDimensions() - 1) + 1;
-	    int cY = rand.nextInt(field.getVerticalDimensions());
-	    if (field.isEmpty(cX, cY)){
-		field.putEntity(new Human(),
-			      cX, cY);
-		i++;
-	    }
+	/**
+	 * Initializes the population
+	 */
+	public void initializePopulation() {
+		this.fillMapHumans();
+		this.fillMapAnimal();
 	}
-    }
+
+	private void fillMapHumans() {
+		Random rand = new Random();
+
+		for (int i = 0; i < nbHumans;) {
+		    int cX = rand.nextInt(field.getHorizontalDimensions() - 1) + 1;
+		    int cY = rand.nextInt(field.getVerticalDimensions());
+		    if (field.isEmpty(cX, cY)){
+			field.putEntity(new Human(),
+					cX, cY);
+			i++;
+		    }
+		}
+	}
 
     private void fillMapAnimal() {
 	Random rand = new Random();
@@ -65,11 +66,11 @@ public class PopulationInitializer {
 	    if (field.isEmpty(cX, cY)) {
 		Boolean isHeSick = rand.nextBoolean();
 		Animal a = new Animal();
-		if (rand.nextBoolean()) a.infect(Disease.drawDisease(), maxDayDead);
+		if (rand.nextBoolean())
+		    a.infect(Disease.drawDisease(), maxDayDead);
 		field.putEntity(a, cX, cY);
 		i++;
 	    }
-			
 	}
     }
 }

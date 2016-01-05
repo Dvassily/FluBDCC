@@ -12,8 +12,11 @@ public class Field {
     
     /**
      * Initialize a map of dimensions (x, y)
-     * @param x horizontal dimensions
-     * @param y vertical dimensions
+     * 
+     * @param x
+     *            horizontal dimensions
+     * @param y
+     *            vertical dimensions
      */
     public Field(int x,
 	       int y,
@@ -70,8 +73,6 @@ public class Field {
 	    case WEST:  moveSucceded = moveToWest(x, y);  break;
 	    }
 	}
-	System.out.println(" ");
-
     }
 
     public boolean moveToNorth(int x, int y) {

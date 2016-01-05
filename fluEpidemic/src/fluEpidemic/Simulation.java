@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.awt.Color;
 
 /**
- * The simulation class
+ * author : @CésarCollé and @BasilDali The simulation class
  */
 public class Simulation {
     private int nbHumans;
@@ -70,7 +70,7 @@ public class Simulation {
 		}
 	    }
 	}
-
+	
 	for (int x = 0; x < field.getHorizontalDimensions(); ++x) {
 	    for (int y = 0; y < field.getVerticalDimensions(); ++y) {
 		if (! field.isEmpty(x, y) && field.reportEntity(x, y).isSick()) {
@@ -79,29 +79,28 @@ public class Simulation {
 			neighbour.infect(field.reportEntity(x, y).getDisease(), maxDayDead);
 		}
 	    }
+	    
+	    view.showStatus(0, this.field);
 	}
-
-	view.showStatus(0, this.field);
     }
 	
-    public String toString(){
+    public String toString() {
 	int dimX = field.getHorizontalDimensions();
 	int dimY = field.getVerticalDimensions();
 
-	String res = "dimX     = "  + dimX + 
-	             " dimY      = " + dimY + "\n" +
-	             "nbHumans = " + nbHumans +
-	             " nbAnimals = " + nbAnimals + "\n\n";
-	
+	String res = "dimX     = " + dimX + " dimY      = " + dimY + "\n" + "nbHumans = " + nbHumans + " nbAnimals = "
+	    + nbAnimals + "\n\n";
+
 	for (int i = 0; i < dimX; i++) {
 	    for (int j = 0; j < dimY; j++) {
-		if (! field.isEmpty(i, j))
-		    res = res + field.reportEntity(i,j).toString() + " ";
-		else res = res + "null ";
+		if (!field.isEmpty(i, j))
+		    res = res + field.reportEntity(i, j).toString() + " ";
+		else
+		    res = res + "null ";
 	    }
-	    res = res+ "\n";
+	    res = res + "\n";
 	}
-		
+
 	return res;
     }
 
@@ -112,4 +111,4 @@ public class Simulation {
     public int getNbAnimals() {
 	return nbAnimals;
     }
-}
+    }
