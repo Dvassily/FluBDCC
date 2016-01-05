@@ -87,10 +87,10 @@ public class GridView extends JFrame implements SimulatorView {
      * @return The color to be used for a given entity
      */
     private Color getColor(Entity entity) {
-	if (entity.isSick()) {
-	    return Color.GREEN;
-	} else if (entity.isDead()) {
+	if (entity.isDead()) {
 	    return Color.BLACK;
+	} else if (entity.isSick()) {
+	    return Color.GREEN;
 	} else {
 	    return getColor(entity.getClass());
 	}

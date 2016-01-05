@@ -128,19 +128,6 @@ public class Field {
     public boolean isEmpty(int x, int y){
 	return map[x][y] == null;		
     }
-
-    /**
-     * Removes the dead entities on the map
-     */
-    public void cleanDead(){
-	for(int i = 0; i < map.length; i++){
-	    for(Entity e : map[i]){
-		if (e.isDead())
-		    e.clear();
-	    }
-	}
-		
-    }
 	
     /**
      * Returns the neighbourhood of the case of coordinates (x,y)
@@ -149,5 +136,9 @@ public class Field {
      */
     public Set<Entity> getNeighbours(int x, int y) {
 	return ns.getNeighbours(this, x, y);
+    }
+
+    public void setNeighbourhoodStrategy(NeighbourhoodStrategy ns) {
+	this.ns = ns;
     }
 }

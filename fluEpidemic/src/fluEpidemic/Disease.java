@@ -7,8 +7,8 @@ import java.util.Random;
  * disease is associated with a mortality rate, an incubation period and a name
  */
 public enum Disease {
-	H1N1("H1N1", 4, 20, 2),
-	H2N2("H2N2", 37, 30, 3);
+	H1N1("H1N1", 4, 100, 90),
+	H2N2("H2N2", 37, 100, 10);
 
 	private String name;
 	private int ratio;
@@ -48,10 +48,6 @@ public enum Disease {
 		return this.duration;
 	}
 
-	public void infect(Entity e) {
-		e.infect(this);
-	}
-	
 	public static Disease drawDisease() {
 		return Disease.values()[(new Random().nextInt(Disease.values().length))];
 	}

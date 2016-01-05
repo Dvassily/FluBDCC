@@ -7,29 +7,21 @@ import java.util.Random;
  * simulation
  */
 public class Human extends Entity {
-	private int recovery;
-
 	/**
-	 * Instanciate an human with a disease
+	 * Instanciate a sick human
 	 * 
 	 * @param disease
 	 *            The type of disease
-	 * @param count
-	 *            The duration of the disease
-	 * @param count
-	 *            The duration of recovery
 	 */
-	public Human(Disease disease, int countDisease, int recover) {
-		super(disease, countDisease);
-		this.recovery = recover;
+	public Human(Disease disease) {
+		super(disease);
 	}
 
 	/**
-	 * Instanciate an human without diseases
+	 * Instanciate an healty human 
 	 */
 	public Human() {
-		this(null, 0, 0);
-		recovery = 0;
+		super();
 	}
 
 	public String getName() {

@@ -52,7 +52,7 @@ public class PopulationInitializer {
 
     private void fillMapAnimal() {
 	Random rand = new Random();
-	field.putEntity(new Animal(Species.CHICKEN, Disease.H1N1, 0), 0, 0);
+	field.putEntity(new Animal(Species.CHICKEN, Disease.H1N1), 0, 0);
 
 	for (int i = 0; i < nbAnimal;) {
 	    int cX = rand.nextInt(field.getHorizontalDimensions());

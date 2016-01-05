@@ -18,16 +18,17 @@ public class Animal extends Entity {
 	 * @param countDisease
 	 *            the duration of the disease
 	 */
-	public Animal(Species type, Disease disease, int countDisease) {
-		super(disease, countDisease);
+	public Animal(Species type, Disease disease) {
+		this.infect(disease);
 		this.type = type;
 	}
 
 	/**
-	 * Instanciate an random generated animal
+	 * Instanciate an random generated healthy animal
 	 */
 	public Animal() {
-		this(Species.values()[(new Random()).nextInt(Species.values().length)], null, 0);
+		super();
+		this.type = Species.values()[(new Random()).nextInt(Species.values().length)];
 	}
 
 	public String getName() {

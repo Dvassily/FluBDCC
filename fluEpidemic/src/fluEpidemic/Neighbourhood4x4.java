@@ -5,6 +5,7 @@ import java.util.HashSet;
 
 public class Neighbourhood4x4 implements NeighbourhoodStrategy {
     public Set<Entity> getNeighbours(Field field, int x, int y) {
+	System.out.println("foo");
 	Set<Entity> neighbours = new HashSet<Entity>();
 	
 	if (x < field.getHorizontalDimensions() - 1 && (! field.isEmpty(x + 1, y)))
