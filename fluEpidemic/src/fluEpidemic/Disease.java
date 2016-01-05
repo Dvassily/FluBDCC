@@ -3,9 +3,8 @@ package fluEpidemic;
 import java.util.Random;
 
 /**
- * author : @CésarCollé and @BasilDali
- * Enum for representing diseases.
- * Each disease is associated with a mortality rate, an incubation period and a name
+ * author : @CésarCollé and @BasilDali Enum for representing diseases. Each
+ * disease is associated with a mortality rate, an incubation period and a name
  */
 public enum Disease {
 	H1N1("H1N1", 4, 2),

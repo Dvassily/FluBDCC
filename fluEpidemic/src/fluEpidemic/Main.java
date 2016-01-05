@@ -3,14 +3,14 @@ package fluEpidemic;
 import java.io.IOException;
 
 public class Main {
-	public static void main(String[] args){
-	    Simulation a = new Simulation(6, 10, 20, 20, new Neighbourhood4x4());
-	    System.out.println(a.toString());
+	public static void main(String[] args) {
+		Simulation a = new Simulation(6, 10, 20, 20, new Neighbourhood4x4());
+		System.out.println(a.toString());
 
-	    try {
-		a.run();
-	    } catch(IOException e) {
-		e.printStackTrace();
-	    }
+		try {
+			a.run();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
